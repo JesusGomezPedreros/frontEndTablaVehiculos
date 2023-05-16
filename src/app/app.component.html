@@ -1,8 +1,50 @@
-<mat-form-field appearance="fill">
-  <mat-label>Choose a date</mat-label>
-  <input matInput [matDatepicker]="picker" [(ngModel)]="fecha">
-  <mat-hint>MM/DD/YYYY</mat-hint>
-  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
-<a>{{fecha}}</a>
+<br>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<div class="container align-items-center">
+  <mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="fecha">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <a>{{fecha}}</a>
+  <button (click)="Servicio()" class="btn btn-primary" style="margin-left: 20px;"> Consultar</button>
+
+  <br>
+  <div>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th>fecha</th>
+          <th *ngFor="let cantidad of valorcantidad"> {{ cantidad.estacion }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{fechaconvertida}}</td>
+          <td *ngFor="let cantidad of valorcantidad">{{ cantidad.cantidad }} {{cantidad.valor}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table table-dark">
+      <tr>
+        <td rowspan="2">Gratis!</td>
+        <td>{{ totalCantidad }}</td>
+       
+      </tr>
+      <tr>
+        <td>{{ totalValor }}</td>
+      </tr>
+    </table>
+    
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

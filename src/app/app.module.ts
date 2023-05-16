@@ -11,7 +11,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { TokenInterceptorService } from './seguridad/token-interceptor.service';
+
 
 
 @NgModule({
@@ -32,7 +34,12 @@ import { HttpClientModule } from '@angular/common/http';
     
   ],
   providers: [
-      DatePipe
+      DatePipe,
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: TokenInterceptorService,
+        multi:true
+      }
   ],
   bootstrap: [AppComponent]
 })
